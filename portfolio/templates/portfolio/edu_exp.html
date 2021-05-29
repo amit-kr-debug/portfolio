@@ -1,0 +1,80 @@
+
+<div class="row mt-lg-0 mt-8 mb-8">
+    <div class="col-lg-6 mt-2 " id="education">
+        <h1 class="display-4 title"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Education</h1>
+        {%for education in educations%}
+            <div class="container py-2">
+                <div class="row">
+                    <div class="col-auto text-center flex-column d-sm-flex">
+                        <div class="row h-50">
+                            <div class="col border-right">&nbsp;</div>
+                            <div class="col">&nbsp;</div>
+                        </div>
+                        <h5>
+                            <span class="badge text-white">{{education.year_of_completion}}</span>
+                        </h5>
+                        <div class="row h-50">
+                            <div class="col border-right">&nbsp;</div>
+                            <div class="col">&nbsp;</div>
+                        </div>
+                    </div>
+                    <!-- timeline item 1 event content -->
+                    <div class="col py-2">
+                    <div class="card education-card bg-text">
+                        <div class="card-body">
+                            <h6 class="education-card-title">{{education.institute}}</h6>
+                            <div style="text-align:center;">
+                            <p class="d-inline p-2 education-card-desc">Board: {{education.board_of_education}}</p>
+                            <p class="d-inline p-2 education-card-desc">{{education.degree}}</p>
+                            <p class="d-inline p-2 education-card-desc">{{education.score}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!--/row-->
+            </div>
+        {% endfor %}
+</div>
+    <div class="col-lg-6 mt-2" id="experiences">
+        <h1 class="display-4 title"><i class="fa fa-briefcase" aria-hidden="true"></i> Experiences</h1>
+        {%for experience in experiences%}
+            <div class="container py-2">
+                <!-- timeline item 1 -->
+                <div class="row">
+                    <!-- timeline item 1 left dot -->
+                    <div class="col-auto text-center flex-column d-sm-flex">
+                        <div class="row h-50">
+                            <div class="col border-right">&nbsp;</div>
+                            <div class="col">&nbsp;</div>
+                        </div>
+                        <h5>
+                            <span class="badge text-white"> {{experience.start_date|date:"Y"}}
+                            </span>
+                        </h5>
+                        <div class="row h-50">
+                            <div class="col border-right">&nbsp;</div>
+                            <div class="col">&nbsp;</div>
+                        </div>
+                    </div>
+                    <!-- timeline item 1 event content -->
+                    <div class="col py-2">
+                    <div class="card education-card bg-text">
+                        <div class="card-body">
+                            <h6 class="education-card-title">{{experience.company}}</h6>
+                            <p class="education-card-desc">{{experience.role}}</p>
+                            <p class="education-card-desc">{{experience.start_date|date:"M Y"}}
+                                {%if experience.end_date%}
+                                    - {{experience.end_date|date:"M Y"}}
+                                {%endif%}
+                            </p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!--/row-->
+            </div>
+        {% endfor %}
+    </div>
+</div>
+

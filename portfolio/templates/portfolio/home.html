@@ -1,16 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Portfolio</title>
-</head>
-<body>
-<h1>AMIT's PORTFOLIO</h1>
-{%for project in projects%}
+  
+{% extends "portfolio/base.html" %}
 
-    <h2>{{project.title}}</h2>
-    <p>{{project.description}}</p>
-    <img src="{{project.image.url}}" height="100" width="100">
-{% endfor %}
-</body>
-</html>
+{% load static %}
+
+{% block content %}
+
+<div class="row justify-content-center my-3">
+  <div class="col-5">
+    <img src="{% static 'portfolio/amit_profile.jpg' %}" class="img-fluid">
+  </div>
+</div>
+
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h2 id="hometext" class="font-weight-bold">Amit Kumar</h2>
+  </div>
+</div>
+
+<h2 class="mt-5">Projects</h2>
+<hr>
+<div class="row">
+  {% for project in projects %}
+  <div class="col-lg-4 col-md-6">
+
+    {% if project.url %}
+    <a href="{{ project.url }}">
+      <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    </a>
+    {% else %}
+
+    <img src="{{ project.image.url }}" class="img-fluid mb-2">
+    {% endif %}
+    <h3>{{ project.title }}</h3>
+    <p>{{ project.description }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+
+<div style="margin-top:40px; margin-bottom:40px;">
+    {% include 'portfolio/edu_exp.html' %}
+</div>
+
+<div style="margin-top:40px; margin-bottom:40px;">
+  {% include 'portfolio/skills_tools.html' %}
+</div>
+
+{% endblock %}
+
